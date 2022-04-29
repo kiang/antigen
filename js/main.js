@@ -107,6 +107,11 @@ map.on('singleclick', function (evt) {
   });
 });
 
+function showPos(lng, lat) {
+  firstPosDone = true;
+  appView.setCenter(ol.proj.fromLonLat([parseFloat(lng), parseFloat(lat)]));
+}
+
 var previousFeature = false;
 var currentFeature = false;
 function showPoint(pointId) {
@@ -256,6 +261,7 @@ $.getJSON('https://kiang.github.io/data.nhi.gov.tw/antigen.json', {}, function (
     });
   }
   routie(':pointId', showPoint);
+  routie('pos/:lng/:lat', showPos);
 
   $('#findPoint').autocomplete({
     source: findTerms,
