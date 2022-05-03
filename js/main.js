@@ -29,14 +29,16 @@ function pointStyleFunction(f) {
   }
   if (p.updated === '') {
     color = '#ccc';
-  } else if (p.count > 100) {
+  } else if (p.count > 77) {
     color = '#48c774'; // > 50% stock
   } else if (p.count > 40) {
     color = '#ffdd57'; // > 20% stock
   } else if (p.count > 20) {
     color = '#fc82b1'; // > 10% stock
-  } else {
+  } else if(p.count > 0) {
     color = '#f00'; // < 10% stock, treat as 0
+  } else {
+    color = '#000';
   }
   return new ol.style.Style({
     image: new ol.style.RegularShape({
