@@ -113,6 +113,15 @@ function showPos(lng, lat) {
   firstPosDone = true;
   appView.setCenter(ol.proj.fromLonLat([parseFloat(lng), parseFloat(lat)]));
 }
+var weekNote = '';
+var today = new Date().getDay();
+if(today === 6) {
+  weekNote = '*** 今天沒有身份證字號尾數限制 ***';
+} else if(today % 2 === 1) {
+  weekNote = '*** 今天身份證字號尾數限制為單號 ***';
+} else {
+  weekNote = '*** 今天身份證字號尾數限制為雙號 ***';
+}
 
 var previousFeature = false;
 var currentFeature = false;
@@ -143,6 +152,7 @@ function showPoint(pointId) {
       } else {
         message += '<tr><th scope="row">' + p.brand + '</th><td>' + p.count + '</td></tr>';
       }
+      message += '<tr><td colspan="2" style="text-align: center;">' + weekNote + '</td></tr>';
       message += '<tr><th scope="row">備註</th><td>' + p.note.replace(/\\n/g, '<br />') + '</td></tr>';
       message += '<tr><th scope="row">電話</th><td>' + p.phone + '</td></tr>';
       message += '<tr><th scope="row">住址</th><td>' + p.address + '</td></tr>';
