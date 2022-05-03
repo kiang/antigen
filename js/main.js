@@ -115,7 +115,7 @@ function showPos(lng, lat) {
 }
 var weekNote = '';
 var today = new Date().getDay();
-if(today === 6) {
+if(today === 0) {
   weekNote = '*** 今天沒有身份證字號尾數限制 ***';
 } else if(today % 2 === 1) {
   weekNote = '*** 今天身份證字號尾數限制為單號 ***';
